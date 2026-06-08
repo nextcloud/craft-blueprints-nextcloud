@@ -40,6 +40,9 @@ class subinfo(info.infoclass):
         self.runtimeDependencies["libs/kdsingleapplication"] = None
         self.runtimeDependencies["qt-libs/qtkeychain"] = None
         self.runtimeDependencies["kde/frameworks/tier1/karchive"] = None
+        if CraftCore.compiler.isLinux:
+            self.runtimeDependencies["kde/frameworks/tier1/kdbusaddons"] = None
+
         self.runtimeDependencies["libs/openssl"] = None
 
 class Package(CMakePackageBase):
