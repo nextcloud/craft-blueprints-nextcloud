@@ -1,3 +1,8 @@
+<!--
+  - SPDX-License-Identifier: BSD-2-Clause
+  - SPDX-FileCopyrightText: 2021 Nextcloud GmbH and Nextcloud contributors
+--!>
+
 # 🖥️ Nextcloud Desktop Client blueprints
 
 :blue_book: We decided to use [KDE Craft](https://community.kde.org/Craft) to get all binary dependencies of the [Nextcloud files desktop client](https://github.com/nextcloud/desktop).
