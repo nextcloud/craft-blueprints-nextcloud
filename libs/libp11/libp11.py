@@ -1,4 +1,7 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: 2021 Nextcloud GmbH and Nextcloud contributors
 # -*- coding: utf-8 -*-
+
 import info
 import os
 import shutil

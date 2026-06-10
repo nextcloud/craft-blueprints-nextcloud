@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: 2021 Nextcloud GmbH and Nextcloud contributors
+
 name: Windows Build and Test
 on:
   pull_request:
