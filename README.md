@@ -1,7 +1,7 @@
 <!--
   - SPDX-License-Identifier: BSD-2-Clause
   - SPDX-FileCopyrightText: 2021 Nextcloud GmbH and Nextcloud contributors
---!>
+-->
 
 # 🖥️ Nextcloud Desktop Client blueprints
 
