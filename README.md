@@ -8,14 +8,18 @@
 :blue_book: We decided to use [KDE Craft](https://community.kde.org/Craft) to get all binary dependencies of the [Nextcloud files desktop client](https://github.com/nextcloud/desktop).
 
 ## System requirements
-- Windows 10 or Windows 11 / Linux / macOS 13+
-- The desktop client code
-- Python 3
-- PowerShell
-- KDE Craft
-- Microsoft Visual Studio 2022 [Windows]
-- The latest version of [Inkscape](https://inkscape.org/release).
-- A Nextcloud server
+- [Windows 10, Windows 11](https://github.com/nextcloud/desktop-client-blueprints/), macOS 13 Ventura (or newer) or Linux
+- [🔽 Inkscape (to generate icons)](https://inkscape.org/release/)
+- Developer tools: cmake, clang/gcc/g++:
+- Qt6 since 3.14, Qt5 for earlier versions
+- OpenSSL
+- [🔽 QtKeychain](https://github.com/frankosterfeld/qtkeychain)
+- SQLite
+- [Xcode](https://developer.apple.com/xcode/) (only on macOS)
+
+#### Optional recommendations:
+- [Qt Creator IDE](https://www.qt.io/product/development-tools)
+- [delta: A viewer for git and diff output](https://github.com/dandavison/delta)
 
 > [!TIP]
 > We highly recommend [Nextcloud development environment on Docker Compose](https://juliushaertl.github.io/nextcloud-docker-dev/) for testing/bug fixing/development.<br>
