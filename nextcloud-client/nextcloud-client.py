@@ -35,7 +35,6 @@ class subinfo(info.infoclass):
             self.runtimeDependencies["libs/qt6/qtwebengine"] = None
 
         self.runtimeDependencies["libs/qt6/qtwebsockets"] = None
-        self.runtimeDependencies["libs/qt6/qtmultimedia"] = None
         self.runtimeDependencies["libs/qt/qtsvg"] = None
         self.runtimeDependencies["libs/qt6/qt5compat"] = None
         self.runtimeDependencies["libs/zlib"] = None
