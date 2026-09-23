@@ -15,26 +15,23 @@ from Utils import CraftHash
 
 class subinfo(info.infoclass):
     def setTargets(self):
-        for ver in ["libp11-0.4.12", "libp11-0.4.17", "libp11-0.4.20"]:
+        for ver in ["libp11-0.4.12", "libp11-0.4.17", "libp11-0.4.20", "libp11-0.4.21"]:
             self.targets[ver] = f"https://github.com/OpenSC/libp11/releases/download/{ver}/{ver}.tar.gz"
             self.targetInstSrc[ver] = ver
 
         self.targetDigests["libp11-0.4.12"] = (["1e1a2533b3fcc45fde4da64c9c00261b1047f14c3f911377ebd1b147b3321cfd"], CraftHash.HashAlgorithm.SHA256)
         self.targetDigests["libp11-0.4.17"] = (["bbd86cdadd0493304be85c01a8604988c8f6c3fff8a902aa3f542a924699c080"], CraftHash.HashAlgorithm.SHA256)
         self.targetDigests["libp11-0.4.20"] = (["a125e0310ff10c189fc1b32a9652101486ea94a6b07c677a30e90e3638d2db48"], CraftHash.HashAlgorithm.SHA256)
+        self.targetDigests["libp11-0.4.21"] = (["efdb523aef8613d447e6a2d38227d4b389866f4bcf4b503130acd7f759490847"], CraftHash.HashAlgorithm.SHA256)
 
         self.description = "A library to handle PKCS#11 cryptographic modules"
-        self.defaultTarget = "libp11-0.4.20"
+        self.defaultTarget = "libp11-0.4.21"
 
     def setDependencies(self):
         self.runtimeDependencies["virtual/base"] = None
         self.buildDependencies["libs/openssl"] = None
         self.buildDependencies["dev-utils/msys"] = None
-        if CraftBase.cacheVersion() == "25.03-nc":
-            # support building libp11 with older cache versions if needed
-            self.buildDependencies["dev-utils/pkg-config"] = None
-        else:
-            self.buildDependencies["dev-utils/pkgconf"] = None
+        self.buildDependencies["dev-utils/pkgconf"] = None
 
 
 class PackageMake(MakeFilePackageBase):
@@ -63,7 +60,7 @@ class PackageMake(MakeFilePackageBase):
         content = content.replace("@exec_prefix@", "${prefix}")
         content = content.replace("@libdir@", "${prefix}/lib")
         content = content.replace("@includedir@", "${prefix}/include")
-        content = content.replace("@VERSION@", "0.4.12")
+        content = content.replace("@VERSION@", "0.4.21")
         content = content.replace("-lp11", "-llibp11")
 
         with open(libp11pcDest, "wt") as f:
@@ -72,6 +69,7 @@ class PackageMake(MakeFilePackageBase):
         return (
             utils.copyFile(os.path.join(self.sourceDir(), "src/libp11.h"), os.path.join(self.installDir(), "include/libp11.h"), linkOnly=False)
             and utils.copyFile(os.path.join(self.sourceDir(), "src/p11_err.h"), os.path.join(self.installDir(), "include/p11_err.h"), linkOnly=False)
+            and utils.copyFile(os.path.join(self.sourceDir(), "src/p11_ver.h"), os.path.join(self.installDir(), "include/p11_ver.h"), linkOnly=False)
             and utils.copyFile(os.path.join(self.sourceDir(), "src/libp11.dll"), os.path.join(self.installDir(), "bin/libp11.dll"), linkOnly=False)
             and utils.copyFile(os.path.join(self.sourceDir(), "src/libp11.lib"), os.path.join(self.installDir(), "lib/libp11.lib"), linkOnly=False)
             and utils.copyFile(os.path.join(self.sourceDir(), "src/pkcs11.dll"), os.path.join(self.installDir(), "bin/pkcs11.dll"), linkOnly=False)
