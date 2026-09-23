@@ -40,6 +40,7 @@ class subinfo(info.infoclass):
         self.runtimeDependencies["kde/frameworks/tier1/karchive"] = None
         if CraftCore.compiler.isLinux:
             self.runtimeDependencies["kde/frameworks/tier1/kdbusaddons"] = None
+            self.runtimeDependencies["libs/openvfs"] = None
 
         self.runtimeDependencies["libs/openssl"] = None
 
