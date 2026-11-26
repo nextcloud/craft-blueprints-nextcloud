@@ -82,7 +82,7 @@ class PackageAutotools(AutoToolsPackageBase):
         super().__init__(**kwargs)
         self.subinfo.options.configure.autoreconf = False
 
-if CraftCore.compiler.isMSVC():
+if CraftCore.compiler.compiler.isMSVC:
 
     class Package(PackageMake):
         pass
