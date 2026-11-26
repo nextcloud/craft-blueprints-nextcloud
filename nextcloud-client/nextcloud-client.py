@@ -9,7 +9,7 @@ class subinfo(info.infoclass):
         self.options.dynamic.registerOption("devMode", False)
         self.options.dynamic.registerOption("versionSuffix", "")
         self.options.dynamic.registerOption("buildWithWebEngine", True)
-        if CraftCore.compiler.isMacOS:
+        if CraftCore.compiler.platform.isMacOS:
             self.options.dynamic.registerOption("osxArchs", "arm64")
             self.options.dynamic.registerOption("buildMacOSBundle", True)
             self.options.dynamic.registerOption("buildFileProviderModule", False)
@@ -38,7 +38,7 @@ class subinfo(info.infoclass):
         self.runtimeDependencies["libs/kdsingleapplication"] = None
         self.runtimeDependencies["qt-libs/qtkeychain"] = None
         self.runtimeDependencies["kde/frameworks/tier1/karchive"] = None
-        if CraftCore.compiler.isLinux:
+        if CraftCore.compiler.platform.isLinux:
             self.runtimeDependencies["kde/frameworks/tier1/kdbusaddons"] = None
             self.runtimeDependencies["libs/openvfs"] = None
 
@@ -69,7 +69,7 @@ class Package(CMakePackageBase):
 
         self.subinfo.options.configure.args += [f"-DMIRALL_VERSION_SUFFIX={versionSuffix}"]
 
-        if CraftCore.compiler.isMacOS:
+        if CraftCore.compiler.platform.isMacOS:
             osxArchs = self.subinfo.options.dynamic.osxArchs
             buildAppBundle = boolToCmakeBool(self.subinfo.options.dynamic.buildMacOSBundle)
             buildFileProviderModule = boolToCmakeBool(self.subinfo.options.dynamic.buildFileProviderModule)
@@ -88,7 +88,7 @@ class Package(CMakePackageBase):
         self.applicationExecutable = "nextcloud"
 
         self.ignoredPackages += ["binary/mysql"]
-        if not CraftCore.compiler.isLinux:
+        if not CraftCore.compiler.platform.isLinux:
             self.ignoredPackages += ["libs/dbus"]
 
         return super().createPackage()
